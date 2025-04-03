@@ -1,1 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ;
+}
+
+#menu, #loading, #game-container {
+    position: absolute;
+    text-align: center;
+}
+
+#menu {
+    color: white;
+}
+
+
+
