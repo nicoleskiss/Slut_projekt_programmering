@@ -33,5 +33,14 @@ function drawBackground() {
 }
 
 // Skapar en slumpmässig sekvens av alla 7 tetromino-typer, dvs. block (I, J, L, O, S, T, Z)
+function generateSequence() {
+  const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
+  while (sequence.length) {
+    const rand = getRandomInt(0, sequence.length - 1);
+	  const name = sequence.splice(rand, 1)[0]; // Ta bort och returnera slumpmässigt element
+	  tetrominoSequence.push(name); // Lägg till i spel-sekvens
+  }
+}
 
+// Returnerar nästa tetromino från sekvensen, genererar ny om sekvensen är slut
 
