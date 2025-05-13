@@ -43,4 +43,41 @@ function generateSequence() {
 }
 
 // Returnerar nästa tetromino från sekvensen, genererar ny om sekvensen är slut
+function getNextTetromino() {
+  if (tetrominoSequence.length === 0) {
+    generateSequence();
+  }
+  const name = tetrominoSequence.pop(); // Plocka nästa tetromino
+  const matrix = tetrominos[name];  // Hämta formmatris
+  const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2); // Startposition kolumn
+  const row = name === 'I' ? -1 : -2; // Startposition rad 
+  return { name, matrix, row, col };
+}
 
+// Roterar blocket medurs
+function rotate(matrix) {
+	const N = matrix.length - 1;
+	const result = matrix.map((row, i) =>
+	  row.map((val, j) => matrix[N - j][i])
+	);
+  
+	return result;
+  }
+
+// Kontrollerar om en rörelse är giltig
+function isValidMove(matrix, cellRow, cellCol) {
+	for (let row = 0; row < matrix.length; row++) {
+	  for (let col = 0; col < matrix[row].length; col++) {
+		if (matrix[row][col] && (
+			cellCol + col < 0 ||
+			cellCol + col >= playfield[0].length ||
+			cellRow + row >= playfield.length ||
+			playfield[cellRow + row][cellCol + col])
+		  ) {
+		  return false;
+		}
+	  }
+	}
+  
+	return true;
+  }
