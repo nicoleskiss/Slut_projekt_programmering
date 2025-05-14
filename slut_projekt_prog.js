@@ -81,3 +81,18 @@ function isValidMove(matrix, cellRow, cellCol) {
   
 	return true;
   }
+
+// Placerar aktuell tetromino på spelplanen
+function placeTetromino() {
+  for (let row = 0; row < tetromino.matrix.length; row++) {
+    for (let col = 0; col < tetromino.matrix[row].length; col++) {
+      if (tetromino.matrix[row][col]) {
+        if (tetromino.row + row < 0) {
+			return showGameOver(); // Spelet slutar om en bit landar utanför toppen
+		  }
+        playfield[tetromino.row + row][tetromino.col + col] = tetromino.name; 
+      }
+    }
+  }
+}
+  
