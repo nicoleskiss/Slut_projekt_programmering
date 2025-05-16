@@ -95,4 +95,54 @@ function placeTetromino() {
     }
   }
 }
+
+// Kontrollera om någon rad är full
+   for (let row = playfield.length - 1; row >= 0; ) {
+	  if (playfield[row].every(cell => !!cell)) {
+		for (let r = row; r >= 0; r--) {
+		  for (let c = 0; c < playfield[r].length; c++) {
+			playfield[r][c] = playfield[r-1][c]; // Flytta rader neråt
+		  }
+		}
+	  }
+	  else {
+		row--;
+	  }
+	}
   
+	tetromino = getNextTetromino(); // Starta ny bit
+
+// Visar Game Over-meddelande och stoppar animationen
+function showGameOver() {
+	cancelAnimationFrame(rAF);
+	gameOver = true;
+  
+	context.fillStyle = 'black';
+	context.globalAlpha = 0.75;
+	context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
+  
+	context.globalAlpha = 1;
+	context.fillStyle = 'white';
+	context.font = '36px monospace';
+	context.textAlign = 'center';
+	context.textBaseline = 'middle';
+	context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
+  }
+  
+  // Initierar canvas och spelplan
+  const canvas = document.getElementById('game');
+  const context = canvas.getContext('2d');
+  const grid = 32;
+  const tetrominoSequence = [];
+  // Skapar 22 rader (varav 2 är "osynliga" överst)
+  const playfield = [];
+  for (let row = -2; row < 20; row++) {
+	playfield[row] = [];
+  
+	for (let col = 0; col < 10; col++) {
+	  playfield[row][col] = 0; // 0 betyder tom ruta
+	  }
+  }
+
+// Formerna för varje tetromino, i form av matriser källa:(https://tetris.fandom.com/wiki/SRS)
+
