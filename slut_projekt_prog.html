@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris</title>
-    <link rel="stylesheet" href="slut_projekt_prog.css">
+  <title>Tetris Spel</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="slut_projekt_prog.css">
 </head>
 <body>
-    <!-- Startknapp -->
-    <div id="menu">
-        <h1>Tetris Slutprojekt</h1>
-        <button onclick="startLoading()">Starta Spel</button>
-    </div>
-    <!-- Laddningsskärm -->
-    <div id="loading" style="display: none;">
-        Laddar... <span id="loading-text">0%</span>
-    </div>
-    <div id="spel-innehåll">
-        <canvas width="320" height="640" id="spel"></canvas>
-    </div>
+	<div id="menu">
+		<h1>Slutprojekt Tetris</h1>
+		<button onclick="startLoading()">Börja Spel</button>
+	</div>
+
+	<div id="loading" style="display: none;">
+		Laddar... <span id="loading-text">0%</span>
+	  </div>
+	
+	  <div id="game-container">
+		<canvas width="320" height="640" id="game"></canvas>
+	</div>
+
 <script src="slut_projekt_prog.js"></script>
 </body>
 </html>
