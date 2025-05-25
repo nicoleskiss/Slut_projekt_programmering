@@ -72,7 +72,6 @@ function getRandomInt(min, max) {
   }
   
   // Roterar en NxN matris 90 grader medurs
-  // Algoritm från CodeReview StackExchange
   function rotate(matrix) {
 	const N = matrix.length - 1;
 	const result = matrix.map((row, i) =>
